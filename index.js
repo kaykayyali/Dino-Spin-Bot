@@ -1,8 +1,9 @@
 import 'dotenv/config'
-import dino_config from "./approved-dinos.js";
+import dino_config from "./approved-dinos.js"
 import MODES from "./modes.js"
 import { Client, Intents } from  'discord.js'
 import Spinner from './dino-spin.js'
+import _ from 'underscore'
 
 // NAME_MODE Selects a dino by name, FOOD_MODE gives you a diet classification
 const spinnerMode = MODES.FOOD_MODE 
@@ -20,8 +21,10 @@ client.on('messageCreate', message => {
   // Dependent on Wants a new random dino being entered in mee6
 	if (message.content.includes("Wants a new random dino") || message.content.includes("TEST_SPIN_BOT")) {
     let outputString = spinner.random_dino();
-    message.reply({ content: `${outputString}`, fetchReply: true });
-    message.react('🦖');
+    _.throttle(function() {
+      message.reply({ content: `${outputString}`, fetchReply: true });
+      message.react('🦖');
+    }, 1000 * 3);
   }
 });
 
