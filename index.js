@@ -18,7 +18,7 @@ client.once('ready', () => {
 
 client.on('messageCreate', message => {
   // Dependent on ROLLED the Wheel! being entered in mee6
-	if (message.content.includes("Wants a new random dino!") || message.content.includes("test")) {
+	if (message.content.includes("Wants a new random dino!") || message.content.includes("TEST_SPIN_BOT")) {
     let outputString = spinner.random_dino();
     message.reply({ content: `${outputString}`, fetchReply: true });
     message.react('🦖');
