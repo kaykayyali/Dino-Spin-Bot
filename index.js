@@ -22,7 +22,7 @@ client.on('messageCreate', message => {
   if (message.content.includes("Wants a new random dino") || message.content.includes("TEST_SPIN_BOT")) {
     // Simple Rate limiting
     let currentTime = Date.now();
-    // One Second
+    // Three Seconds
     let minimumTimeElapsed = 3000;
     if ((lastRequest + minimumTimeElapsed) > currentTime) {
       return;
