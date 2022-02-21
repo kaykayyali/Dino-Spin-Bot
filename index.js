@@ -5,7 +5,7 @@ import { Client, Intents } from  'discord.js'
 import Spinner from './dino-spin.js'
 
 // NAME_MODE Selects a dino by name, FOOD_MODE gives you a diet classification
-const spinnerMode = MODES.NAME_MODE 
+const spinnerMode = MODES.FOOD_MODE 
 // See https://discordjs.guide/popular-topics/reactions.html#unicode-emojis for details on intents
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 // Load the module, and provide necessary configurations
@@ -19,8 +19,8 @@ client.once('ready', () => {
 client.on('messageCreate', message => {
   // Dependent on ROLLED the Wheel! being entered in mee6
 	if (message.content.includes("Wants a new random dino!") || message.content.includes("test")) {
-    let dinoName = spinner.random_dino();
-    message.reply({ content: `${spinnerMode.contentString}: ${dinoName}`, fetchReply: true });
+    let outputString = spinner.random_dino();
+    message.reply({ content: `${outputString}`, fetchReply: true });
     message.react('🦖');
   }
 });

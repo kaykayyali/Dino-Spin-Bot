@@ -120,7 +120,7 @@ export default
             "bluePrint": "Turtle_Character_BP_C"
           },
           {
-            "name": "30px Carcharodontosaurus",
+            "name": "Carcharodontosaurus",
             "foodType": "Carnivore",
             "bluePrint": "Unknown"
           },
@@ -210,7 +210,7 @@ export default
             "bluePrint": "DesertKaiju_FirstFlockChar_BP_C"
           },
           {
-            "name": "30px Desmodus",
+            "name": "Desmodus",
             "foodType": "Hematophagous",
             "bluePrint": "Unknown"
           },
@@ -320,7 +320,7 @@ export default
             "bluePrint": "LanternBird_Character_BP_C"
           },
           {
-            "name": "30px Fenrir",
+            "name": "Fenrir",
             "foodType": "Carnivore",
             "bluePrint": "Unknown"
           },
@@ -330,7 +330,7 @@ export default
             "bluePrint": "Shapeshifter_Small_Character_BP_C"
           },
           {
-            "name": "30px Fjordhawk",
+            "name": "Fjordhawk",
             "foodType": "Omnivore",
             "bluePrint": "Unknown"
           },
