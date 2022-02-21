@@ -11,6 +11,7 @@ const spinnerMode = MODES.FOOD_MODE
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 // Load the module, and provide necessary configurations
 const spinner = new Spinner(process.env.MAP, spinnerMode, dino_config);
+let lastRequest = Date.now();
 
 // Once started, you could do something fancy here, but i think this is meh
 client.once('ready', () => {
@@ -18,15 +19,24 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', message => {
-  // Dependent on Wants a new random dino being entered in mee6
-	if (message.content.includes("Wants a new random dino") || message.content.includes("TEST_SPIN_BOT")) {
-    let outputString = spinner.random_dino();
-    _.throttle(function() {
-      message.reply({ content: `${outputString}`, fetchReply: true });
-      message.react('🦖');
-    }, 1000 * 3);
+  if (message.content.includes("Wants a new random dino") || message.content.includes("TEST_SPIN_BOT")) {
+    // Simple Rate limiting
+    let currentTime = Date.now();
+    // One Second
+    let minimumTimeElapsed = 3000;
+    if ((lastRequest + minimumTimeElapsed) > currentTime) {
+      return;
+    }
+    lastRequest = Date.now();
+    handle_message(message);
   }
 });
 
+function handle_message(message) {
+  // Dependent on Wants a new random dino being entered in mee6
+  let outputString = spinner.random_dino();
+  message.reply({ content: `${outputString}`, fetchReply: true });
+  message.react('🦖');
+}
 // Hidden with dotEnv
 client.login(process.env.TOKEN);
