@@ -11,7 +11,7 @@ export default class Dino_Spinner {
     build_lists() {
         this.permittedDinos = this.dino_config.maps[this.map];
         // Convert Json to Something we can use and avoid name mismatches
-        this.localDinoMap = this.dino_config.dinos.reduce((accumulator, currentDino) => ({ ...accumulator, [currentDino.name.toLowerCase()]: currentDino }), {})
+        this.localDinoMap = this.dino_config.dinos.reduce((accumulator, currentDino) => ({ ...accumulator, [currentDino.name]: currentDino }), {})
         // Determine what food types are available based on the current map
         this.permittedFoodTypes = [];
         this.localDinosByFoodMap = {}
